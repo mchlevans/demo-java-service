@@ -21,7 +21,11 @@ dependencies {
 	implementation 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-json'
+	implementation 'org.springframework:spring-webflux:6.1.6'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation platform('io.projectreactor:reactor-bom:2020.0.9')
+    implementation 'io.projectreactor:reactor-core'
+	implementation 'javax.json:javax.json-api:1.1.4'
 }
 
 tasks.named('test') {

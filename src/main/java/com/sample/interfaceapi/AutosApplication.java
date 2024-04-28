@@ -15,19 +15,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class AutosApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Hello World");
 		SpringApplication.run(AutosApplication.class, args);
 	}
 
 	// Runs at startup
-	@Bean
-	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return args -> {
-			String[] beanNames = ctx.getBeanDefinitionNames();
-			Arrays.sort(beanNames);
-			for (String beanName : beanNames) {
-				System.out.println(beanName);
-			}
-		};
-	}
+	// @Bean
+	// public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+	// 	return args -> {
+	// 		String[] beanNames = ctx.getBeanDefinitionNames();
+	// 		Arrays.sort(beanNames);
+	// 		for (String beanName : beanNames) {
+	// 			System.out.println(beanName);
+	// 		}
+	// 	};
+	// }
 }
