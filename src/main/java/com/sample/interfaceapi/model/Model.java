@@ -8,4 +8,6 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor
 public class Model {
     private String figure;
+    private float mse;
+    private float rsquared;
 }

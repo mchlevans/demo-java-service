@@ -1,33 +1,39 @@
 package com.autos.api.model;
 
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Component
-public class ModelService {
+import com.autos.api.common.SuccessResponse;
 
+@Component
+@PropertySource("classpath:application.properties")
+public class ModelService {
     Logger logger = LoggerFactory.getLogger(ModelController.class);
 
     // simple implementation, default 30 second timeout
     // to-do: move hardcoded url to config
-    WebClient client = WebClient.create("http://analytics:8000");
+
+    @Value("${analytics.service.url}")
+    private String analyticsServiceUrl;
 
     // fetched model from analytcis API based on configs
-    public ModelResponse getModelBlocking(ModelRequest modelRequest) {
-        ModelResponse model;
+    public SuccessResponse<Model> getModelBlocking(ModelRequest modelRequest) {
+        WebClient client = WebClient.create(analyticsServiceUrl);
 
+        SuccessResponse<Model> model;
         logger.info("attempt to fetch model from analytics api");
         model = client.post()
-            .uri("/poly")
+            .uri("/autos-model")
             .accept(MediaType.APPLICATION_JSON)
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(modelRequest)
             .retrieve()
-            .bodyToMono(ModelResponse.class)
+            .bodyToMono(SuccessResponse.class)
             .block();
         
         return model;

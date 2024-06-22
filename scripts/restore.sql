@@ -57,8 +57,8 @@ CREATE TABLE public.vehicle (
     price NUMERIC,
     city_L_100km NUMERIC,
     horsepower_binned CHARACTER VARYING(50),
-    diesel BOOLEAN,
-    gas BOOLEAN,
+    diesel INTEGER,
+    gas INTEGER,
     vehicle_id INTEGER NOT NULL
 );
 
