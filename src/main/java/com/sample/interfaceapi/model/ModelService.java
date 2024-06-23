@@ -15,16 +15,16 @@ import com.autos.api.common.SuccessResponse;
 public class ModelService {
     Logger logger = LoggerFactory.getLogger(ModelController.class);
 
-    // simple implementation, default 30 second timeout
-    // to-do: move hardcoded url to config
+    
 
     @Value("${analytics.service.url}")
     private String analyticsServiceUrl;
 
-    // fetched model from analytcis API based on configs
+    // fetched model from analytcis API based on user provided inputs
     public SuccessResponse<Model> getModelBlocking(ModelRequest modelRequest) {
         WebClient client = WebClient.create(analyticsServiceUrl);
 
+        // currently default 30 second timeout on request
         SuccessResponse<Model> model;
         logger.info("attempt to fetch model from analytics api");
         model = client.post()
