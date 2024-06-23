@@ -8,9 +8,12 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public class ModelRequest {
-    @JsonProperty("xVarName")
-    private String xVarName;
+    @JsonProperty("xVarNames")
+    private String[] xVarNames;
 
     @JsonProperty("yVarName")
     private String yVarName;
+
+    @JsonProperty("polynomial")
+    private int polynomial;
 }
