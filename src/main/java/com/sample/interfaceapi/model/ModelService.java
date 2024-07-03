@@ -15,8 +15,6 @@ import com.autos.api.common.SuccessResponse;
 public class ModelService {
     Logger logger = LoggerFactory.getLogger(ModelController.class);
 
-    
-
     @Value("${analytics.service.url}")
     private String analyticsServiceUrl;
 

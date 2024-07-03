@@ -1,6 +1,6 @@
 services:
   db:
-    image: autosdb
+    image: "autosdb"
     ports:
       - "5432:5432"
     environment:
@@ -9,7 +9,7 @@ services:
       - ./pgdata/custom/workingExampleData:/var/lib/postgresql/data
     env_file: "./.env"
   app:
-    image: "autosapi"
+    image: "interfaceapi"
     ports:
       - "8080:8080"
     env_file: "./.env"
