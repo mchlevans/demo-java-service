@@ -19,7 +19,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler(WebClientResponseException.class)
     protected ResponseEntity<Object> handle(WebClientResponseException exception, WebRequest request) {
         
-        // this is really specific to the analytics api error response
+        // current implmentation specific to the analytics api error response
         ErrorResponse body = exception.getResponseBodyAs(ErrorResponse.class);
 
         return handleExceptionInternal(exception, body, 
@@ -47,7 +47,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
             return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
         }
 
-    // catch failures in serializing / deserializing request
+    // catch failures in serializing / deserializing
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(
         HttpMessageNotReadableException ex,
