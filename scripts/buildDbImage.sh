@@ -1,1 +1,1 @@
-docker build --progress plain --tag autosdb -f db.Dockerfile .
+docker build --progress plain --tag analyticsdb -f db.Dockerfile .

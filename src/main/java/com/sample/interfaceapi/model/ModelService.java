@@ -15,8 +15,6 @@ import com.autos.api.common.SuccessResponse;
 public class ModelService {
     Logger logger = LoggerFactory.getLogger(ModelController.class);
 
-    
-
     @Value("${analytics.service.url}")
     private String analyticsServiceUrl;
 
@@ -26,7 +24,7 @@ public class ModelService {
 
         // currently default 30 second timeout on request
         SuccessResponse<Model> model;
-        logger.info("attempt to fetch model from analytics api");
+
         model = client.post()
             .uri("/autos-model")
             .accept(MediaType.APPLICATION_JSON)

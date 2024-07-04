@@ -1,1 +1,1 @@
-docker build --progress plain --tag autosapi --file api.Dockerfile .
+docker build --progress plain --tag interfaceapi --file api.Dockerfile .

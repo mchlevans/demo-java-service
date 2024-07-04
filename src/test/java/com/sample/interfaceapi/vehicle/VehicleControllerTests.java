@@ -1,7 +1,5 @@
 package com.autos.api.vehicle;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
