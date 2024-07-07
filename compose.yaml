@@ -1,10 +1,8 @@
 services:
   db:
-    image: "autosdb"
+    image: "analyticsdb"
     ports:
       - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - ./pgdata/custom/workingExampleData:/var/lib/postgresql/data
     env_file: "./.env"
@@ -15,3 +13,17 @@ services:
     env_file: "./.env"
     depends_on:
       - db
+  analytics:
+    image: "analyticsapi"
+    env_file: "./.env"
+    ports:
+      - "8000:8000"
+  proxy:
+    image: "autos-proxy"
+    ports:
+        - "80:80"
+    expose:
+        - "80"
+    depends_on:
+      - app
+    env_file: "./.env"
